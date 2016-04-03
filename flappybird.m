@@ -11,7 +11,7 @@ GAME.WINDOW_SCALE = 2;     % The actual size of the window divided by resolution
 GAME.FLOOR_TOP_Y = [];      % The y position of upper crust of the floor.
 GAME.N_UPDATES_PER_SEC = [];
 GAME.FRAME_DURATION = [];
-GAME.GRAVITY = 0.1356; %0.15; %0.2; %1356;
+GAME.GRAVITY = 0.1356; %0.15; %0.2; %1356;  % empirical gravity constant
       
 TUBE.MIN_HEIGHT = [];       % The minimum height of a tube
 TUBE.RANGE_HEIGHT = [];     % The range of the height of a tube
@@ -543,16 +543,12 @@ end
         down_keys = strcmp(key, FlyKeyNames);
         FlyKeyStatus = any(FlyKeyValid & down_keys);
         FlyKeyValid = FlyKeyValid & (~down_keys);
-%         FlyKeyValid
-        %         KeyStatus = (strcmp(key, KeyNames) | LastKeyStatus);
     end
     function stl_KeyPressFcn(hObject, eventdata, handles)
         curKey = get(hObject, 'CurrentKey');
         switch true
             case strcmp(curKey, 'escape') 
-                CloseReq = true;
-%             case strcmp(curKey, '+')
-            
+                CloseReq = true;            
         end
     end
     function stl_CloseReqFcn(hObject, eventdata, handles)
